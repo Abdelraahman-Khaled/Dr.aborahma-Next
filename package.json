@@ -9,10 +9,17 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.2.0",
+    "bootstrap": "^5.3.8",
+    "gsap": "^3.14.2",
+    "jquery": "^4.0.0",
+    "magnific-popup": "^1.2.0",
     "next": "16.1.6",
     "next-intl": "^4.8.3",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "swiper": "^12.1.2",
+    "wow.js": "^1.2.2"
   },
   "devDependencies": {
     "eslint": "^9",
