@@ -1,25 +1,34 @@
-import { useTranslations } from "next-intl";
-import styles from "./page.module.css";
-import { Link } from "../../i18n/routing";
+import React from 'react';
+import Preloader from './components/Preloader';
+import Header from './components/Header';
+import HeroSection from './components/HeroSection';
+import AboutUsSection from './components/AboutUsSection';
+import ApproachSection from './components/ApproachSection';
+import CertificatesExperienceSection from './components/CertificatesExperienceSection';
+import ObesitySurgeriesSection from './components/ObesitySurgeriesSection';
+import TelevisionInterviewsSection from './components/TelevisionInterviewsSection';
+import BMICalculatorSection from './components/BMICalculatorSection';
+import Component10 from './components/Component10';
+import FAQSection from './components/FAQSection';
+import BlogSection from './components/BlogSection';
+import Footer from './components/Footer';
 
-export default function Home() {
-  const t = useTranslations("Index");
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <div className={styles.intro}>
-          <h1>{t("title")}</h1>
-          <p>{t("description")}</p>
-        </div>
-        <div className={styles.ctas}>
-          <Link href="/" locale="en" className={styles.primary}>
-            English
-          </Link>
-          <Link href="/" locale="ar" className={styles.secondary}>
-            العربية
-          </Link>
-        </div>
-      </main>
-    </div>
-  );
+export default function HomeHtml() {
+    return (
+        <React.Fragment>
+            <Preloader />
+            <Header />
+            <HeroSection />
+            <AboutUsSection />
+            <ApproachSection />
+            <CertificatesExperienceSection />
+            <ObesitySurgeriesSection />
+            <TelevisionInterviewsSection />
+            <BMICalculatorSection />
+            <Component10 />
+            <FAQSection />
+            <BlogSection />
+            <Footer />
+        </React.Fragment>
+    );
 }
