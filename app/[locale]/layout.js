@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "../../i18n/routing";
 import Script from "next/script";
 import { getTranslations } from "next-intl/server";
+import Providers from "./Providers";
 
 // Importing CSS from installed NPM packages
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }) {
   const t = await getTranslations({ locale, namespace: "Index" });
 
   return {
-    title: t("t11") + " | " + t("t9"), // Dr. Mohammed Abu Rahma | Bariatric and Laparoscopic...
+    title: t("t11") + " | " + t("t9"), // Dr. Mohammed bin Abdulrahman Abu Rahma | Bariatric and Laparoscopic...
     description: t("t10"),
     icons: {
       icon: "/images/favicon.png",
@@ -46,7 +47,7 @@ export default async function RootLayout({ children, params }) {
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <Providers>{children}</Providers>
         </NextIntlClientProvider>
 
         <Script src="/js/jquery-3.7.1.min.js" strategy="beforeInteractive" />

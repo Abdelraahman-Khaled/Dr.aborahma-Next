@@ -23,8 +23,15 @@ td {
   padding-left: 0;
 }
 .hero-content-list ul li:before {
-  left: initial;
+  content: "\f058";
+  position: absolute;
+  font-family: "Font Awesome 6 Free", "FontAwesome", sans-serif;
+  top: 0;
+  left: auto;
   right: 0;
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--accent-color);
 }
 .about-experience-box {
   left: initial;
@@ -117,6 +124,7 @@ td {
 @media only screen and (max-width: 991px) {
   .hero-content-list ul li {
     padding-right: 25px;
+    padding-left: 0;
   }
   .about-list ul li {
     padding-left: 0;

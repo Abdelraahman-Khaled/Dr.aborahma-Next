@@ -12,7 +12,7 @@ export default function BlogSection() {
             {/*  Section Title Start  */}
             <div className="section-title">
               <h3 className="wow fadeInUp">{t('t139')}</h3>
-              <h2 className="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">{t('t140')}</h2>
+              <h4 className="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">{t('t140')}</h4>
             </div>
             {/*  Section Title End  */}
           </div>
