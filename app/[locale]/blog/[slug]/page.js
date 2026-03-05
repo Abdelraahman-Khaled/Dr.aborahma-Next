@@ -7,6 +7,7 @@ import BlogDetailSection from "../components/BlogDetailSection";
 import BlogFooter from "../components/BlogFooter";
 import { notFound } from "next/navigation";
 import Script from "next/script";
+import WowReinit from "../../components/WowReinit";
 
 export async function generateMetadata({ params }) {
   const { locale, slug } = await params;
@@ -167,10 +168,10 @@ export default async function BlogSlugPage({ params }) {
         />
       )}
       <BlogPreloader />
+      <WowReinit />
       <BlogHeader />
       <BlogHeaderX title={title} />
       <BlogDetailSection blog={blog} />
-      <BlogFooter />
     </React.Fragment>
   );
 }

@@ -13,6 +13,7 @@ import "swiper/css/bundle";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "animate.css";
 import "magnific-popup/dist/magnific-popup.css";
+import Footer from "./components/Footer";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -48,14 +49,15 @@ export default async function RootLayout({ children, params }) {
       <body>
         <NextIntlClientProvider messages={messages}>
           <Providers>{children}</Providers>
+          <Footer />
         </NextIntlClientProvider>
 
         <Script src="/js/jquery-3.7.1.min.js" strategy="beforeInteractive" />
         <Script src="/js/bootstrap.min.js" strategy="beforeInteractive" />
         <Script src="/js/validator.min.js" strategy="lazyOnload" />
         <Script src="/js/jquery.waypoints.min.js" strategy="lazyOnload" />
-        <Script src="/js/jquery.counterup.min.js" strategy="lazyOnload" />
-        <Script src="/js/swiper-bundle.min.js" strategy="lazyOnload" />
+        <Script src="/js/jquery.counterup.min.js" strategy="beforeInteractive" />
+        <Script src="/js/swiper-bundle.min.js" strategy="beforeInteractive" />
         <Script src="/js/jquery.magnific-popup.min.js" strategy="lazyOnload" />
         <Script src="/js/SmoothScroll.js" strategy="lazyOnload" />
         <Script src="/js/parallaxie.js" strategy="lazyOnload" />

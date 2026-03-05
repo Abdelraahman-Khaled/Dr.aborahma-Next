@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
@@ -18,6 +18,16 @@ export default function BlogDetailSection({ blog: initialBlog }) {
         refetchInterval: 10000,
         enabled: !!slug,
     });
+
+    // Reset custom cursor state left over from previous page (Next.js client nav)
+    useEffect(() => {
+        const cursor = document.querySelector('.cb-cursor');
+        if (cursor) {
+            cursor.classList.remove('-text', '-pointer');
+            const cursorText = cursor.querySelector('.cb-cursor-text');
+            if (cursorText) cursorText.innerHTML = '';
+        }
+    }, []);
 
     if (!blog) return null;
 
