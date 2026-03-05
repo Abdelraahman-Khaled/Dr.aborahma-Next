@@ -120,9 +120,10 @@ export default function BlogDetailSection({ blog: initialBlog }) {
                                                         aria-labelledby={`heading${index}`}
                                                         data-bs-parent="#faqaccordion"
                                                     >
-                                                        <div className="accordion-body">
-                                                            <p>{locale === 'ar' ? faq.answer_ar : faq.answer_en}</p>
-                                                        </div>
+                                                        <div
+                                                            className="accordion-body"
+                                                            dangerouslySetInnerHTML={{ __html: locale === 'ar' ? faq.answer_ar : faq.answer_en }}
+                                                        ></div>
                                                     </div>
                                                 </div>
                                             ))}
