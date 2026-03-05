@@ -4156,7 +4156,7 @@ td {
   border: 1px solid #ddd;
 }
 
-thead {
+th {
   background-color: var(--accent-color);
   color: white;
 }
@@ -4207,7 +4207,6 @@ thead {
 }
 
 .post-entry {
-  border-bottom: 1px solid var(--divider-color);
   padding-bottom: 30px;
   margin-bottom: 30px;
 }

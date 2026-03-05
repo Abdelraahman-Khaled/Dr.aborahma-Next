@@ -14,6 +14,7 @@ export default function BlogMainSection() {
     const { data: blogs, isLoading, error } = useQuery({
         queryKey: ['blogs-landing', locale],
         queryFn: getBlogs,
+        refetchInterval: 10000,
     });
 
     return (
@@ -32,6 +33,12 @@ export default function BlogMainSection() {
                         {error && (
                             <div className="col-12 text-center py-5">
                                 <p className="text-danger">Failed to load blogs. Please try again later.</p>
+                            </div>
+                        )}
+
+                        {!isLoading && !error && blogs?.length === 0 && (
+                            <div className="col-12 text-center py-5">
+                                <h3 className="text-muted">{t('noBlogsFound')}</h3>
                             </div>
                         )}
 

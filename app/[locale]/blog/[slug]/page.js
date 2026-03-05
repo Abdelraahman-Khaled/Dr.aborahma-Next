@@ -77,7 +77,7 @@ export default async function BlogSlugPage({ params }) {
                 Typically detail pages show the post title or just "Blog" breadcrumb.
                 I'll keep it simple and consistent with the existing theme.
             */}
-      <BlogHeaderX />
+      <BlogHeaderX title={locale === "ar" ? blog.title_ar : blog.title_en} />
       <BlogDetailSection blog={blog} />
       <BlogFooter />
     </React.Fragment>

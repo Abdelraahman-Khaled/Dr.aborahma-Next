@@ -2,10 +2,22 @@
 
 import React from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'next/navigation';
+import { getBlogDetails } from '../../../api/blogs';
 
-export default function BlogDetailSection({ blog }) {
+export default function BlogDetailSection({ blog: initialBlog }) {
+    const { slug } = useParams();
     const locale = useLocale();
     const t = useTranslations('Blog');
+
+    const { data: blog = initialBlog } = useQuery({
+        queryKey: ['blog-detail', slug],
+        queryFn: () => getBlogDetails(slug),
+        initialData: initialBlog,
+        refetchInterval: 10000,
+        enabled: !!slug,
+    });
 
     if (!blog) return null;
 
@@ -16,9 +28,6 @@ export default function BlogDetailSection({ blog }) {
     const localeImage = blogPhotos.find(p => locale === 'ar' ? !!p.is_arabic : !p.is_arabic)?.url;
     const fallbackImage = blogPhotos[0]?.url;
     const image = localeImage || fallbackImage;
-
-    // Get content based on locale
-    const content = blog.contents?.[0] ? (locale === 'ar' ? blog.contents[0].content_ar : blog.contents[0].content_en) : '';
 
     return (
         <div className="page-single-post">
@@ -41,11 +50,34 @@ export default function BlogDetailSection({ blog }) {
 
                         {/* Post Single Content Start */}
                         <div className="post-content">
-                            <div className="post-entry">
-                                <div
-                                    dangerouslySetInnerHTML={{ __html: content }}
-                                ></div>
-                            </div>
+                            {blog.contents?.map((item, index) => {
+                                const sectionContent = locale === 'ar' ? item.content_ar : item.content_en;
+                                return (
+                                    <div className="post-entry" key={item.id || index}>
+                                        <div
+                                            dangerouslySetInnerHTML={{ __html: sectionContent }}
+                                        ></div>
+
+                                        {/* Section Photos Start */}
+                                        {item.photos && item.photos.length > 0 && (
+                                            <div className="post-section-photos row mt-4 mb-4">
+                                                {item.photos.map((photo, pIndex) => (
+                                                    <div className={`col-md-${item.photos.length === 1 ? '12' : '6'} mb-3`} key={pIndex}>
+                                                        <figure className="image-anime">
+                                                            <img
+                                                                src={photo.url}
+                                                                alt={locale === 'ar' ? photo.alt_ar : photo.alt_en}
+                                                                className="img-fluid rounded-4 shadow-sm"
+                                                            />
+                                                        </figure>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                        {/* Section Photos End */}
+                                    </div>
+                                );
+                            })}
                         </div>
                         {/* Post Single Content End */}
 
