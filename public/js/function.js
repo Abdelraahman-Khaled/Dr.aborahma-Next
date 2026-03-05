@@ -395,15 +395,8 @@ window.initThemePlugins = function ($) {
     }
   }
   /* Service Item List End */
-};
 
-$(document).ready(function () {
-  if (window.initThemePlugins) {
-    window.initThemePlugins(window.jQuery);
-  }
-});
-
-$(document).ready(function () {
+  // === BMI Calculator Logic ===
   const translations = {
     en: {
       subtitle:
@@ -606,5 +599,11 @@ $(document).ready(function () {
   function resetLayout() {
     $(".layout").fadeOut();
     $(".calc_info_line_result_wrapper").css("right", "0");
+  }
+}; // End of window.initThemePlugins
+
+$(document).ready(function () {
+  if (window.initThemePlugins) {
+    window.initThemePlugins(window.jQuery);
   }
 });
