@@ -13,7 +13,6 @@ export default function BlogSection() {
   const { data: blogs, isLoading, error } = useQuery({
     queryKey: ['blogs-home', locale],
     queryFn: getBlogs,
-    refetchInterval: 10000,
   });
 
   const displayBlogs = Array.isArray(blogs) ? [...blogs].reverse().slice(0, 3) : [];

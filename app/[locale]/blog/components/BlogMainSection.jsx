@@ -14,7 +14,6 @@ export default function BlogMainSection() {
     const { data: blogs, isLoading, error } = useQuery({
         queryKey: ['blogs-landing', locale],
         queryFn: getBlogs,
-        refetchInterval: 10000,
     });
 
     return (

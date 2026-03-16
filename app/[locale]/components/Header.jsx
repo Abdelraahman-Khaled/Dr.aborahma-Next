@@ -13,9 +13,20 @@ export default function Header() {
   const targetLocale = locale === 'ar' ? 'en' : 'ar';
   const flagImage = locale === 'ar' ? '/images/united-states.png' : '/images/saudi-arabia.png';
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isSticky, setIsSticky] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <React.Fragment>
-      <header className="main-header bg-section">
+      <header className={`main-header bg-section ${isSticky ? 'active' : ''}`}>
         <div className="header-sticky">
           <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
@@ -26,30 +37,30 @@ export default function Header() {
               {/* Logo End */}
 
               {/* Main Menu Start */}
-              <div className="collapse navbar-collapse main-menu">
+              <div className={`collapse navbar-collapse main-menu ${isMobileMenuOpen ? 'show' : ''}`}>
                 <div className="nav-menu-wrapper">
                   <ul className="navbar-nav ms-auto" id="menu">
                     <li className="nav-item">
-                      <a className="nav-link" href={`/${locale}#home`}>{t('t1')}</a>
+                      <a className="nav-link" href={`/${locale}#home`} onClick={() => setIsMobileMenuOpen(false)}>{t('t1')}</a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href={`/${locale}#about`}>{t('t2')}</a>
+                      <a className="nav-link" href={`/${locale}#about`} onClick={() => setIsMobileMenuOpen(false)}>{t('t2')}</a>
                     </li>
 
                     <li className="nav-item">
-                      <a className="nav-link" href={`/${locale}#obesity_surgeries`}>{t('t3')}</a>
+                      <a className="nav-link" href={`/${locale}#obesity_surgeries`} onClick={() => setIsMobileMenuOpen(false)}>{t('t3')}</a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href={`/${locale}#TV_interviews`}>{t('t4')}</a>
+                      <a className="nav-link" href={`/${locale}#TV_interviews`} onClick={() => setIsMobileMenuOpen(false)}>{t('t4')}</a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href={`/${locale}#calc`}>{t('t5')}</a>
+                      <a className="nav-link" href={`/${locale}#calc`} onClick={() => setIsMobileMenuOpen(false)}>{t('t5')}</a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href={`/${locale}#faqs`}>{t('t6')}</a>
+                      <a className="nav-link" href={`/${locale}#faqs`} onClick={() => setIsMobileMenuOpen(false)}>{t('t6')}</a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href={`/${locale}/blog`}>{t('t7')}</a>
+                      <a className="nav-link" href={`/${locale}/blog`} onClick={() => setIsMobileMenuOpen(false)}>{t('t7')}</a>
                     </li>
                     <li className="nav-item">
                       <a className="nav-link" href={`/${targetLocale}${pathname}`}>
@@ -61,7 +72,11 @@ export default function Header() {
                 </div>
               </div>
               {/* Main Menu End */}
-              <div className="navbar-toggle"></div>
+              <div className="navbar-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </div>
             </div>
           </nav>
           <div className="responsive-menu"></div>

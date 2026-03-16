@@ -63,7 +63,7 @@ export default async function RootLayout({ children, params }) {
             src="https://www.googletagmanager.com/ns.html?id=GTM-NK6MKF79"
             height="0"
             width="0"
-            style="display:none;visibility:hidden"
+            style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
 
@@ -74,8 +74,11 @@ export default async function RootLayout({ children, params }) {
 
         <Script src="/js/jquery-3.7.1.min.js" strategy="beforeInteractive" />
         <Script src="/js/bootstrap.min.js" strategy="beforeInteractive" />
-        <Script src="/js/validator.min.js" strategy="afterInteractive" />
-        <Script src="/js/jquery.waypoints.min.js" strategy="afterInteractive" />
+        <Script src="/js/validator.min.js" strategy="beforeInteractive" />
+        <Script
+          src="/js/jquery.waypoints.min.js"
+          strategy="beforeInteractive"
+        />
         <Script
           src="/js/jquery.counterup.min.js"
           strategy="beforeInteractive"
@@ -83,21 +86,21 @@ export default async function RootLayout({ children, params }) {
         <Script src="/js/swiper-bundle.min.js" strategy="beforeInteractive" />
         <Script
           src="/js/jquery.magnific-popup.min.js"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
-        <Script src="/js/SmoothScroll.js" strategy="afterInteractive" />
-        <Script src="/js/parallaxie.js" strategy="afterInteractive" />
-        <Script src="/js/gsap.min.js" strategy="afterInteractive" />
-        <Script src="/js/magiccursor.js" strategy="afterInteractive" />
-        <Script src="/js/SplitText.js" strategy="afterInteractive" />
-        <Script src="/js/ScrollTrigger.min.js" strategy="afterInteractive" />
+        <Script src="/js/SmoothScroll.js" strategy="beforeInteractive" />
+        <Script src="/js/parallaxie.js" strategy="beforeInteractive" />
+        <Script src="/js/gsap.min.js" strategy="beforeInteractive" />
+        <Script src="/js/magiccursor.js" strategy="beforeInteractive" />
+        <Script src="/js/SplitText.js" strategy="beforeInteractive" />
+        <Script src="/js/ScrollTrigger.min.js" strategy="beforeInteractive" />
         <Script
           src="/js/jquery.mb.YTPlayer.min.js"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
-        <Script src="/js/wow.min.js" strategy="afterInteractive" />
-        <Script src="/js/jquery.slicknav.js" strategy="afterInteractive" />
-        <Script src="/js/function.js" strategy="afterInteractive" />
+        <Script src="/js/wow.min.js" strategy="beforeInteractive" />
+        <Script src="/js/jquery.slicknav.js" strategy="beforeInteractive" />
+        <Script src="/js/function.js" strategy="beforeInteractive" />
       </body>
     </html>
   );
