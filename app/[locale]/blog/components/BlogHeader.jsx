@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '../../../../i18n/routing';
 
-export default function BlogHeader() {
+export default function BlogHeader({ alternateLink }) {
     const t = useTranslations('Blog');
     const locale = useLocale();
     const pathname = usePathname();
@@ -51,7 +51,7 @@ export default function BlogHeader() {
                                             <Link className="nav-link" href="/blog">{t('t7')}</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" locale={targetLocale} href={pathname}>
+                                            <Link className="nav-link" locale={targetLocale} href={alternateLink || pathname}>
                                                 <span className={locale === 'ar' ? 'me-2 px-1' : 'ms-2 px-1'}>{t('t8')}</span>
                                                 <img src={flagImage} alt={t('attr58')} />
                                             </Link>

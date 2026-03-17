@@ -153,6 +153,9 @@ export default async function BlogSlugPage({ params }) {
     };
   }
 
+  const alternateSlug = locale === "ar" ? blog.slug : blog.slug_ar;
+  const alternateLink = `/blog/${alternateSlug}`;
+
   return (
     <React.Fragment>
       <Script
@@ -169,7 +172,7 @@ export default async function BlogSlugPage({ params }) {
       )}
       <BlogPreloader />
       <WowReinit />
-      <BlogHeader />
+      <BlogHeader alternateLink={alternateLink} />
       <BlogHeaderX title={title} />
       <BlogDetailSection blog={blog} />
     </React.Fragment>

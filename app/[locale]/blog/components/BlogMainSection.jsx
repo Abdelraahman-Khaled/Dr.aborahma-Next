@@ -43,7 +43,7 @@ export default function BlogMainSection() {
 
                         {!isLoading && !error && Array.isArray(blogs) && [...blogs].reverse().map((blog) => {
                             const title = locale === 'ar' ? blog.title_ar : blog.title_en;
-                            const slug = locale === 'ar' ? blog.slug_ar : blog.slug;
+                            const slug = locale === 'ar' ? blog.slug_ar?.trim() : blog.slug?.trim();
 
                             // Find photo based on locale
                             const blogPhotos = blog.photos || [];
