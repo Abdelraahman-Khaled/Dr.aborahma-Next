@@ -4,7 +4,7 @@ export default function robots() {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/api/",
+      disallow: "/cdn-cgi/",
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   };
